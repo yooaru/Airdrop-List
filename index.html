@@ -7,44 +7,56 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="profile">
-        <img src="avatar.png" alt="Profile Picture" class="avatar">
-        <h1>riyoar</h1>
-        <p>#NGOCOK</p>
-        <div class="social-icons">
-            <a href="https://github.com"><img src="github-icon.png" alt="GitHub"></a>
-            <a href="https://facebook.com"><img src="fb-icon.png" alt="Facebook"></a>
-            <a href="#"><img src="x-icon.png" alt="Unknown"></a>
-            <a href="https://instagram.com"><img src="ig-icon.png" alt="Instagram"></a>
+    <div class="profile-container">
+        <div class="profile">
+            <img src="avatar.png" alt="Profile Picture" class="avatar">
+            <h1>riyoar</h1>
+            <p>#NGOCOK</p>
+            <div class="social-icons">
+                <a href="https://github.com"><img src="github-icon.png" alt="GitHub"></a>
+                <a href="https://facebook.com"><img src="fb-icon.png" alt="Facebook"></a>
+                <a href="#"><img src="x-icon.png" alt="Unknown"></a>
+                <a href="https://instagram.com"><img src="ig-icon.png" alt="Instagram"></a>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('free-airdrop')">Free Airdrop</button>
+            <button class="tab" onclick="showTab('paid-airdrop')">Paid Airdrop</button>
+            <button class="tab" onclick="showTab('ended')">Ended</button>
+        </div>
+
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
         </div>
     </div>
 
-    <div class="tabs">
-        <button class="tab active" onclick="showTab('free-airdrop')">Free Airdrop</button>
-        <button class="tab" onclick="showTab('paid-airdrop')">Paid Airdrop</button>
-        <button class="tab" onclick="showTab('ended')">Ended</button>
-    </div>
-
-    <div id="free-airdrop" class="airdrop-list">
-        <div class="airdrop-item">
-            <span class="airdrop">Thetan World</span>
-            <span class="task">GameFi</span>
-            <a href="#" class="link">Visit</a>
+    <div class="airdrop-table">
+        <div class="table-header">
+            <span class="header">Airdrop</span>
+            <span class="header">Type</span>
+            <span class="header">Link</span>
         </div>
-        <div class="airdrop-item">
-            <span class="airdrop">PrimeFi</span>
-            <span class="task">Testnet</span>
-            <a href="#" class="link">Visit</a>
+        <div id="free-airdrop" class="airdrop-list">
+            <div class="airdrop-item">
+                <span class="airdrop">Thetan World</span>
+                <span class="task">GameFi</span>
+                <a href="https://thetanworld.com" class="link">Visit</a>
+            </div>
+            <div class="airdrop-item">
+                <span class="airdrop">PrimeFi</span>
+                <span class="task">Testnet</span>
+                <a href="https://primefi.com" class="link">Visit</a>
+            </div>
         </div>
-        <!-- Tambahkan item airdrop lainnya di sini -->
-    </div>
 
-    <div id="paid-airdrop" class="airdrop-list" style="display:none;">
-        <p>Content for Paid Airdrop</p>
-    </div>
+        <div id="paid-airdrop" class="airdrop-list" style="display:none;">
+            <p>Content for Paid Airdrop</p>
+        </div>
 
-    <div id="ended" class="airdrop-list" style="display:none;">
-        <p>Content for Ended Airdrop</p>
+        <div id="ended" class="airdrop-list" style="display:none;">
+            <p>Content for Ended Airdrop</p>
+        </div>
     </div>
 
     <script src="script.js"></script>
