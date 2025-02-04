@@ -1,196 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Header Design</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="header">
-    <img src="avatar.png" alt="Avatar" class="avatar">
-    <h1>riyoar</h1>
-    <p>#NGOCOK</p>
-    <div class="social-links">
-      <a href="https://github.com" target="_blank">
-        <img src="github-icon.png" alt="GitHub">
-      </a>
-      <a href="https://facebook.com" target="_blank">
-        <img src="fb-icon.png" alt="Facebook">
-      </a>
-      <a href="https://twitter.com" target="_blank">
-        <img src="x-icon.png" alt="Twitter">
-      </a>
-      <a href="https://instagram.com" target="_blank">
-        <img src="ig-icon.png" alt="Instagram">
-      </a>
-    </div>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Airdrop Pages</title>
-  <style>
-    /* CSS untuk styling */
-    body {
-      font-family: Arial, sans-serif;
-    }
-
-    .tabs {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
-
-    .tab-button {
-      padding: 10px 20px;
-      cursor: pointer;
-      border: 1px solid #ccc;
-      background-color: #f9f9f9;
-      margin-right: 5px;
-      border-radius: 5px;
-    }
-
-    .tab-button.active {
-      background-color: #007bff;
-      color: white;
-    }
-
-    .tab-content {
-      display: none;
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      background-color: #f9f9f9;
-    }
-
-    .tab-content.active {
-      display: block;
-    }
-  </style>
-</head>
-<body>
-  <div class="tabs">
-    <button class="tab-button active" data-tab="free">Free Airdrop</button>
-    <button class="tab-button" data-tab="paid">Paid Airdrop</button>
-    <button class="tab-button" data-tab="ended">Ended</button>
+<div class="profile">
+  <img src="avatar.png" alt="Profile Picture" class="avatar">
+  <h1>riyoar</h1>
+  <p>#NGOCOK</p>
+  <div class="social-icons">
+    <a href="https://github.com"><i class="fa fa-github"></i></a>
+    <a href="https://facebook.com"><i class="fa fa-facebook"></i></a>
+    <a href="#"><i class="fa fa-unknown"></i></a>
+    <a href="https://instagram.com"><i class="fa fa-instagram"></i></a>
   </div>
+</div>
 
-  <div id="free" class="tab-content active">
-    <h2>Free Airdrop</h2>
-    <p>List of free airdrops goes here...</p>
+<div class="tabs">
+  <button class="tab active">Free Airdrop</button>
+  <button class="tab">Paid Airdrop</button>
+  <button class="tab">Ended</button>
+</div>
+
+<div class="airdrop-list">
+  <div class="airdrop-item">
+    <span class="airdrop">Thetan World</span>
+    <span class="task">GameFi</span>
+    <a href="#" class="link">Visit</a>
   </div>
-  <div id="paid" class="tab-content">
-    <h2>Paid Airdrop</h2>
-    <p>List of paid airdrops goes here...</p>
-  </div>
-  <div id="ended" class="tab-content">
-    <h2>Ended</h2>
-    <p>List of ended airdrops goes here...</p>
-  </div>
-
-  <script>
-    // JavaScript untuk navigasi antar tab
-    const tabButtons = document.querySelectorAll(".tab-button");
-    const tabContents = document.querySelectorAll(".tab-content");
-
-    tabButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        // Hapus kelas aktif dari semua tombol dan konten
-        tabButtons.forEach((btn) => btn.classList.remove("active"));
-        tabContents.forEach((content) => content.classList.remove("active"));
-
-        // Tambahkan kelas aktif ke tab yang diklik
-        button.classList.add("active");
-        document.getElementById(button.dataset.tab).classList.add("active");
-      });
-    });
-  </script>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Airdrop List</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-        }
-        .container {
-            width: 90%;
-            max-width: 800px;
-            margin: 20px auto;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: #fff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
-        tr:hover {
-            background-color: #f2f2f2;
-        }
-        a {
-            color: #4CAF50;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Airdrop List</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>Airdrop</th>
-                    <th>Task</th>
-                    <th>Link</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Thetan World</td>
-                    <td>GameFi</td>
-                    <td><a href="https://marketplace.thetanworld.com/homepage" target="_blank">Visit</a></td>
-                </tr>
-                <tr>
-                    <td>PrimeFi</td>
-                    <td>Testnet</td>
-                    <td><a href="testnet.primefi.xyz" target="_blank">Visit</a></td>
-                </tr>
-                <tr>
-                    <td>Ordinox</td>
-                    <td>Testnet</td>
-                    <td><a href="https://origins.ordinox.xyz/" target="_blank">Visit</a></td>
-                </tr>
-                <tr>
-                    <td>Cypher</td>
-                    <td>Testnet</td>
-                    <td><a href="https://cypher.z1labs.ai/testnet/" target="_blank">Visit</a></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</body>
-</html>
+  <!-- Tambahkan item airdrop lainnya di sini -->
+</div>
