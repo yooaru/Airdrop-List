@@ -6,7 +6,9 @@ body {
 }
 
 .profile-container {
-    border: 2px solid red; /* Border area merah */
+    border: none; /* Border area merah */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
     padding: 20px;
     margin: 20px;
     text-align: center;
@@ -17,6 +19,7 @@ body {
     width: 100px;
     height: 100px;
     border-radius: 50%;
+    border: 3px solid blue;
 }
 
 .social-icons a {
@@ -48,6 +51,9 @@ body {
 }
 
 .search-bar {
+  position: absolute;
+    top: 20px;
+    left: 20px
     margin: 20px 0;
     display: flex;
     justify-content: center;
