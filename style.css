@@ -73,7 +73,9 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 10px 0;
-    border-bottom: 2px solid lightblue
+    border: 1px solid gray;
+    background-color: gray;
+    color: black;
 }
 
 .header {
@@ -97,19 +99,27 @@ body {
 .airdrop, .task{
     flex: 1;
     text-align: center;
-    border: 1px solid blue;
-    border-radius: 10px;
-    background-color: blue;
-    color: white;/* Border pada kolom Type dan Link */
+    border: none;
+    background-color: transparent;
+    color: black;
+    font-size: smaller;/* Border pada kolom Type dan Link */
+}
+
+.task {
+    border: 1px solid #63c9e5; /* Border #63c9e5 */
+    background-color: #63c9e5; /* Latar belakang #63c9e5 */
+    color: white; /* Teks warna putih */
+    border-radius: 5px; /* Sudut tidak lancip */
 }
 
 .link {
     flex: 1;
     text-align: center;
-    border: 1px solid lightblue; /* Border light blue */
-    border-radius: 10px; /* Sudut tidak lancip */
-    background-color: lightblue; /* Warna latar belakang biru muda */
-    color: green; /* Teks warna hijau */
+    border: 1px #6A98AF; /* Border light blue */
+    border-radius: 5px; /* Sudut tidak lancip */
+    background-color:  #6A98AF; /* Warna latar belakang biru muda */
+    color: white; /* Teks warna hijau */
     padding: 5px;
     margin: 0 5px;
+    font-size: smaller;
 }
