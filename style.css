@@ -5,9 +5,12 @@ body {
     background-color: #f4f4f4;
 }
 
-.profile {
+.profile-container {
+    border: 2px solid red; /* Border area merah */
+    padding: 20px;
+    margin: 20px;
     text-align: center;
-    margin: 20px 0;
+    background-color: #fff;
 }
 
 .avatar {
@@ -44,12 +47,43 @@ body {
     color: #fff;
 }
 
-.airdrop-list {
+.search-bar {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.search-bar input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 50%;
+}
+
+.airdrop-table {
     margin: 20px;
     padding: 10px;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 2px solid #000;
+}
+
+.header {
+    font-weight: bold;
+    flex: 1;
+    text-align: center;
+}
+
+.airdrop-list {
+    margin: 20px;
+    padding: 10px;
 }
 
 .airdrop-item {
@@ -59,7 +93,13 @@ body {
     border-bottom: 1px solid #ccc;
 }
 
-.airdrop-item .link {
+.task, .link {
+    flex: 1;
+    text-align: center;
+    border: 1px solid #ccc; /* Border pada kolom Type dan Link */
+}
+
+.airdrop-item .link a {
     color: #007bff;
     text-decoration: none;
 }
