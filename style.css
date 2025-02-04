@@ -48,7 +48,9 @@ body {
 }
 
 .search-bar {
-  position: relative;
+  position: absolute;
+    top: 100px;
+    left: 20px;
     margin: 20px 0;
     display: flex;
     justify-content: center;
