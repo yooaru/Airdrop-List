@@ -1,54 +1,65 @@
 body {
-  font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
 }
 
 .profile {
-  text-align: center;
+    text-align: center;
+    margin: 20px 0;
 }
 
 .avatar {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
 }
 
 .social-icons a {
-  margin: 0 10px;
-  color: #000;
-  text-decoration: none;
+    margin: 0 10px;
+}
+
+.social-icons img {
+    width: 30px;
+    height: 30px;
 }
 
 .tabs {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 .tab {
-  padding: 10px 20px;
-  margin: 0 5px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  cursor: pointer;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .tab.active {
-  background-color: #007bff;
-  color: #fff;
+    background-color: #007bff;
+    color: #fff;
 }
 
 .airdrop-list {
-  margin-top: 20px;
+    margin: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .airdrop-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
 }
 
 .airdrop-item .link {
-  color: #007bff;
-  text-decoration: none;
+    color: #007bff;
+    text-decoration: none;
 }
