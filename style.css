@@ -106,10 +106,10 @@ body {
 .link {
     flex: 1;
     text-align: center;
-    **border: 1px solid lightblue;** /* Border light blue */
-    **border-radius: 10px;** /* Sudut tidak lancip */
-    **background-color: lightblue;** /* Warna latar belakang biru muda */
-    **color: green;** /* Teks warna hijau */
+    border: 1px solid lightblue; /* Border light blue */
+    border-radius: 10px; /* Sudut tidak lancip */
+    background-color: lightblue; /* Warna latar belakang biru muda */
+    color: green; /* Teks warna hijau */
     padding: 5px;
     margin: 0 5px;
 }
