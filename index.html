@@ -25,12 +25,88 @@
         <img src="ig-icon.png" alt="Instagram">
       </a>
     </div>
-    <div class="tabs">
-      <a href="#" class="tab active">Free Airdrop</a>
-      <a href="#" class="tab">Paid Airdrop</a>
-      <a href="#" class="tab">Ended</a>
-    </div>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Airdrop Pages</title>
+  <style>
+    /* CSS untuk styling */
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .tab-button {
+      padding: 10px 20px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      background-color: #f9f9f9;
+      margin-right: 5px;
+      border-radius: 5px;
+    }
+
+    .tab-button.active {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .tab-content {
+      display: none;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="tabs">
+    <button class="tab-button active" data-tab="free">Free Airdrop</button>
+    <button class="tab-button" data-tab="paid">Paid Airdrop</button>
+    <button class="tab-button" data-tab="ended">Ended</button>
   </div>
+
+  <div id="free" class="tab-content active">
+    <h2>Free Airdrop</h2>
+    <p>List of free airdrops goes here...</p>
+  </div>
+  <div id="paid" class="tab-content">
+    <h2>Paid Airdrop</h2>
+    <p>List of paid airdrops goes here...</p>
+  </div>
+  <div id="ended" class="tab-content">
+    <h2>Ended</h2>
+    <p>List of ended airdrops goes here...</p>
+  </div>
+
+  <script>
+    // JavaScript untuk navigasi antar tab
+    const tabButtons = document.querySelectorAll(".tab-button");
+    const tabContents = document.querySelectorAll(".tab-content");
+
+    tabButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        // Hapus kelas aktif dari semua tombol dan konten
+        tabButtons.forEach((btn) => btn.classList.remove("active"));
+        tabContents.forEach((content) => content.classList.remove("active"));
+
+        // Tambahkan kelas aktif ke tab yang diklik
+        button.classList.add("active");
+        document.getElementById(button.dataset.tab).classList.add("active");
+      });
+    });
+  </script>
 </body>
 </html>
 
