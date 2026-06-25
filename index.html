@@ -1,104 +1,269 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Airdrop Tracker | riyoar</title>
-    <meta name="description" content="Curated airdrop tracker — free, paid, and ended campaigns. Updated regularly.">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪂</text></svg>">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AirdropScan — Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="bg-grid"></div>
+  <!-- Mobile overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-    <div class="container">
-        <header class="profile-container">
-            <div class="profile">
-                <div class="avatar-wrapper">
-                    <img src="avatar.png" alt="riyoar" class="avatar">
-                    <span class="status-dot"></span>
-                </div>
-                <div class="profile-info">
-                    <h1>riyoar</h1>
-                    <p class="tagline">Airdrop Hunter & Web3 Enthusiast</p>
-                    <div class="stats-row">
-                        <div class="stat">
-                            <span class="stat-num" id="total-count">0</span>
-                            <span class="stat-label">Total</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-num active-num" id="active-count">0</span>
-                            <span class="stat-label">Active</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-num ended-num" id="ended-count">0</span>
-                            <span class="stat-label">Ended</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="social-icons">
-                    <a href="https://github.com/yooaru" target="_blank" rel="noopener" title="GitHub"><img src="github-icon.png" alt="GitHub"></a>
-                    <a href="https://facebook.com/" target="_blank" rel="noopener" title="Facebook"><img src="fb-icon.png" alt="Facebook"></a>
-                    <a href="https://x.com/" target="_blank" rel="noopener" title="X / Twitter"><img src="x-icon.png" alt="X"></a>
-                    <a href="https://instagram.com/" target="_blank" rel="noopener" title="Instagram"><img src="ig-icon.png" alt="Instagram"></a>
-                </div>
-            </div>
-        </header>
-
-        <div class="tabs-container">
-            <div class="tabs">
-                <button class="tab active" onclick="showTab('free-airdrop')" data-tab="free-airdrop">
-                    <span class="tab-icon">🪂</span> Free
-                    <span class="tab-count" id="free-count">0</span>
-                </button>
-                <button class="tab" onclick="showTab('paid-airdrop')" data-tab="paid-airdrop">
-                    <span class="tab-icon">💰</span> Paid
-                    <span class="tab-count" id="paid-count">0</span>
-                </button>
-                <button class="tab" onclick="showTab('ended')" data-tab="ended">
-                    <span class="tab-icon">🏁</span> Ended
-                    <span class="tab-count" id="ended-tab-count">0</span>
-                </button>
-            </div>
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <div class="logo-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect width="28" height="28" rx="8" fill="var(--accent-primary)"/>
+            <path d="M8 14L12 10L16 14L20 10" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 18L12 14L16 18L20 14" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+          </svg>
         </div>
-
-        <div class="controls">
-            <div class="search-bar">
-                <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-                <input type="text" id="searchInput" placeholder="Search airdrop..." oninput="filterAirdrops()">
-            </div>
-            <div class="filter-tags">
-                <button class="filter-tag active" onclick="filterByTag('all')">All</button>
-                <button class="filter-tag" onclick="filterByTag('TESTNET')">Testnet</button>
-                <button class="filter-tag" onclick="filterByTag('DEPIN')">DePIN</button>
-                <button class="filter-tag" onclick="filterByTag('DAILY')">Daily</button>
-                <button class="filter-tag" onclick="filterByTag('BRIDGE')">Bridge</button>
-                <button class="filter-tag" onclick="filterByTag('DEFI')">DeFi</button>
-                <button class="filter-tag" onclick="filterByTag('SOCIAL')">Social</button>
-                <button class="filter-tag" onclick="filterByTag('POINTS')">Points</button>
-            </div>
-        </div>
-
-        <div class="airdrop-table">
-            <div class="table-header">
-                <span class="col-project">Project</span>
-                <span class="col-chain">Chain</span>
-                <span class="col-type">Type</span>
-                <span class="col-status">Status</span>
-                <span class="col-reward">Est. Reward</span>
-                <span class="col-link">Link</span>
-            </div>
-            <div id="free-airdrop" class="airdrop-list"></div>
-            <div id="paid-airdrop" class="airdrop-list" style="display:none;"></div>
-            <div id="ended" class="airdrop-list" style="display:none;"></div>
-        </div>
-
-        <footer class="footer">
-            <p>Last updated: <span id="last-updated">June 2026</span></p>
-            <p class="disclaimer">Always DYOR. This list is for educational purposes only. Links are third-party — verify before connecting your wallet.</p>
-        </footer>
+        <span class="logo-text">AirdropScan</span>
+      </div>
+      <button class="sidebar-close" id="sidebarClose" aria-label="Close sidebar">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 5L15 15M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
     </div>
 
-    <script src="script.js"></script>
+    <nav class="sidebar-nav">
+      <a href="#" class="nav-item active" data-page="dashboard">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="7" height="7" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="11" y="2" width="7" height="7" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="2" y="11" width="7" height="7" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="11" y="11" width="7" height="7" rx="2" stroke="currentColor" stroke-width="1.5"/></svg>
+        <span>Dashboard</span>
+      </a>
+      <a href="#" class="nav-item" data-page="free">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2L12.5 7.5L18 8.5L14 12.5L15 18L10 15.5L5 18L6 12.5L2 8.5L7.5 7.5L10 2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        <span>Free Airdrops</span>
+        <span class="nav-badge">14</span>
+      </a>
+      <a href="#" class="nav-item" data-page="paid">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M10 6V14M12 8H9C8.4 8 8 8.4 8 9C8 9.6 8.4 10 9 10H11C11.6 10 12 10.4 12 11C12 11.6 11.6 12 11 12H8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span>Paid Airdrops</span>
+        <span class="nav-badge">4</span>
+      </a>
+      <a href="#" class="nav-item" data-page="ended">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M7 10L9 12L13 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Ended</span>
+        <span class="nav-badge">6</span>
+      </a>
+      <a href="#" class="nav-item" data-page="watchlist">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 10C3 10 6 4 10 4C14 4 17 10 17 10C17 10 14 16 10 16C6 16 3 10 3 10Z" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg>
+        <span>Watchlist</span>
+      </a>
+      <div class="nav-divider"></div>
+      <a href="#" class="nav-item" data-page="settings">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M10 2V4M10 16V18M18 10H16M4 10H2M15.7 4.3L14.3 5.7M5.7 14.3L4.3 15.7M15.7 15.7L14.3 14.3M5.7 5.7L4.3 4.3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span>Settings</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="social-links">
+        <a href="https://github.com/yooaru" target="_blank" rel="noopener" class="social-link" aria-label="GitHub">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="Twitter/X">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+      </div>
+      <div class="sidebar-user">
+        <div class="user-avatar">ri</div>
+        <div class="user-info">
+          <span class="user-name">riyoar</span>
+          <span class="user-role">Airdrop Hunter</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Layout -->
+  <div class="main-wrapper">
+    <!-- Top Header -->
+    <header class="top-header">
+      <div class="header-left">
+        <button class="hamburger" id="hamburger" aria-label="Open sidebar">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 6H19M3 11H19M3 16H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="header-search">
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M11 11L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <input type="text" id="globalSearch" placeholder="Search projects, chains, types..." autocomplete="off">
+          <kbd class="search-kbd">/</kbd>
+        </div>
+      </div>
+      <div class="header-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="3.5" stroke="currentColor" stroke-width="1.5"/><path d="M9 1.5V3M9 15V16.5M16.5 9H15M3 9H1.5M14.5 3.5L13.5 4.5M4.5 13.5L3.5 14.5M14.5 14.5L13.5 13.5M4.5 4.5L3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M15.5 10.5C14.8 14.4 11.4 17 7.5 17 3.4 17 0 13.6 0 9.5S3.4 2 7.5 2c.5 0 1 .05 1.5.15C7.1 3.1 5.5 5.1 5.5 7.5c0 3.6 2.9 6.5 6.5 6.5.8 0 1.6-.15 2.3-.4.2 1.2.7 2.3 1.2 3.3z" fill="currentColor"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Content Area -->
+    <main class="content">
+      <!-- Stats Row -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Total Tracked</div>
+          <div class="stat-value">24</div>
+          <div class="stat-sub">All projects</div>
+        </div>
+        <div class="stat-card accent-green">
+          <div class="stat-label">Active</div>
+          <div class="stat-value">18</div>
+          <div class="stat-sub">Currently live</div>
+        </div>
+        <div class="stat-card accent-teal">
+          <div class="stat-label">Est. Total Value</div>
+          <div class="stat-value">$2.4K–45K</div>
+          <div class="stat-sub">Potential range</div>
+        </div>
+        <div class="stat-card accent-muted">
+          <div class="stat-label">Ended</div>
+          <div class="stat-value">6</div>
+          <div class="stat-sub">Distributed</div>
+        </div>
+      </div>
+
+      <div class="content-body">
+        <!-- Main Content -->
+        <div class="content-main">
+          <!-- Tabs -->
+          <div class="tabs-row">
+            <div class="tabs">
+              <button class="tab active" data-tab="free">Free <span class="tab-count">14</span></button>
+              <button class="tab" data-tab="paid">Paid <span class="tab-count">4</span></button>
+              <button class="tab" data-tab="ended">Ended <span class="tab-count">6</span></button>
+              <button class="tab" data-tab="watchlist">Watchlist <span class="tab-count">0</span></button>
+            </div>
+            <div class="sort-wrap">
+              <select id="sortSelect" class="sort-select">
+                <option value="name">Sort: Name</option>
+                <option value="reward">Sort: Reward</option>
+                <option value="status">Sort: Status</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Filter Chips -->
+          <div class="filter-chips">
+            <button class="chip active" data-filter="all">All</button>
+            <button class="chip" data-filter="TESTNET">Testnet</button>
+            <button class="chip" data-filter="DEPIN">DePIN</button>
+            <button class="chip" data-filter="DEFI">DeFi</button>
+            <button class="chip" data-filter="BRIDGE">Bridge</button>
+            <button class="chip" data-filter="SOCIAL">Social</button>
+            <button class="chip" data-filter="POINTS">Points</button>
+          </div>
+
+          <!-- Cards Grid -->
+          <div class="cards-grid" id="cardsGrid">
+            <!-- Cards rendered by JS -->
+          </div>
+
+          <!-- Empty state for watchlist -->
+          <div class="empty-state" id="emptyState" style="display:none;">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><path d="M24 8L28 17L38 18.5L31 25.5L32.5 36L24 31.5L15.5 36L17 25.5L10 18.5L20 17L24 8Z" stroke="var(--text-muted)" stroke-width="2" fill="none"/></svg>
+            <p>No items in your watchlist yet</p>
+            <span>Click the bookmark icon on any project card to add it here.</span>
+          </div>
+        </div>
+
+        <!-- Right Sidebar -->
+        <aside class="right-sidebar">
+          <div class="widget">
+            <h3 class="widget-title">Quick Stats</h3>
+            <div class="widget-stats">
+              <div class="ws-item">
+                <span class="ws-dot" style="background:var(--type-testnet)"></span>
+                <span class="ws-label">Testnet</span>
+                <span class="ws-value">9</span>
+              </div>
+              <div class="ws-item">
+                <span class="ws-dot" style="background:var(--type-depin)"></span>
+                <span class="ws-label">DePIN</span>
+                <span class="ws-value">3</span>
+              </div>
+              <div class="ws-item">
+                <span class="ws-dot" style="background:var(--type-defi)"></span>
+                <span class="ws-label">DeFi</span>
+                <span class="ws-value">5</span>
+              </div>
+              <div class="ws-item">
+                <span class="ws-dot" style="background:var(--type-bridge)"></span>
+                <span class="ws-label">Bridge</span>
+                <span class="ws-value">5</span>
+              </div>
+              <div class="ws-item">
+                <span class="ws-dot" style="background:var(--type-social)"></span>
+                <span class="ws-label">Social</span>
+                <span class="ws-value">2</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="widget">
+            <h3 class="widget-title">Recently Added</h3>
+            <div class="recent-list">
+              <div class="recent-item">
+                <div class="recent-logo" style="background:hsl(200,60%,50%)">EC</div>
+                <div class="recent-info">
+                  <span class="recent-name">Eclipse</span>
+                  <span class="recent-desc">SVM L2 · Testnet</span>
+                </div>
+              </div>
+              <div class="recent-item">
+                <div class="recent-logo" style="background:hsl(260,60%,50%)">PN</div>
+                <div class="recent-info">
+                  <span class="recent-name">Pipe Network</span>
+                  <span class="recent-desc">Solana · DePIN</span>
+                </div>
+              </div>
+              <div class="recent-item">
+                <div class="recent-logo" style="background:hsl(30,70%,50%)">CN</div>
+                <div class="recent-info">
+                  <span class="recent-name">Corn Network</span>
+                  <span class="recent-desc">L2 · Testnet</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="widget">
+            <h3 class="widget-title">💡 Tips</h3>
+            <div class="tips-list">
+              <div class="tip">Always use a fresh wallet for testnet airdrops to avoid phishing risks.</div>
+              <div class="tip">Bridge small amounts first to test new networks before committing larger funds.</div>
+              <div class="tip">Consistency matters — interact weekly to maximize eligibility for retroactive rewards.</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer-left">
+          <span class="footer-disclaimer">⚠️ DYOR — This is not financial advice. Airdrop values are estimates only.</span>
+        </div>
+        <div class="footer-right">
+          <span class="footer-updated">Last updated: <time id="lastUpdated"></time></span>
+          <span class="footer-sep">·</span>
+          <span class="footer-credit">Built by <a href="https://github.com/yooaru" target="_blank" rel="noopener">riyoar</a></span>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
