@@ -3,87 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List Nguli</title>
+    <title>Airdrop Tracker | riyoar</title>
+    <meta name="description" content="Curated airdrop tracker — free, paid, and ended campaigns. Updated regularly.">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪂</text></svg>">
 </head>
 <body>
-    <div class="profile-container">
-        <div class="profile">
-            <img src="avatar.png" alt="Profile Picture" class="avatar">
-            <h1>riyoar</h1>
-            <p>#NGOCOK</p>
-            <div class="social-icons">
-                <a href="https://github.com"><img src="github-icon.png" alt="GitHub"></a>
-                <a href="https://facebook.com"><img src="fb-icon.png" alt="Facebook"></a>
-                <a href="#"><img src="x-icon.png" alt="Unknown"></a>
-                <a href="https://instagram.com"><img src="ig-icon.png" alt="Instagram"></a>
+    <div class="bg-grid"></div>
+
+    <div class="container">
+        <header class="profile-container">
+            <div class="profile">
+                <div class="avatar-wrapper">
+                    <img src="avatar.png" alt="riyoar" class="avatar">
+                    <span class="status-dot"></span>
+                </div>
+                <div class="profile-info">
+                    <h1>riyoar</h1>
+                    <p class="tagline">Airdrop Hunter & Web3 Enthusiast</p>
+                    <div class="stats-row">
+                        <div class="stat">
+                            <span class="stat-num" id="total-count">0</span>
+                            <span class="stat-label">Total</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-num active-num" id="active-count">0</span>
+                            <span class="stat-label">Active</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-num ended-num" id="ended-count">0</span>
+                            <span class="stat-label">Ended</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="social-icons">
+                    <a href="https://github.com/yooaru" target="_blank" rel="noopener" title="GitHub"><img src="github-icon.png" alt="GitHub"></a>
+                    <a href="https://facebook.com/" target="_blank" rel="noopener" title="Facebook"><img src="fb-icon.png" alt="Facebook"></a>
+                    <a href="https://x.com/" target="_blank" rel="noopener" title="X / Twitter"><img src="x-icon.png" alt="X"></a>
+                    <a href="https://instagram.com/" target="_blank" rel="noopener" title="Instagram"><img src="ig-icon.png" alt="Instagram"></a>
+                </div>
+            </div>
+        </header>
+
+        <div class="tabs-container">
+            <div class="tabs">
+                <button class="tab active" onclick="showTab('free-airdrop')" data-tab="free-airdrop">
+                    <span class="tab-icon">🪂</span> Free
+                    <span class="tab-count" id="free-count">0</span>
+                </button>
+                <button class="tab" onclick="showTab('paid-airdrop')" data-tab="paid-airdrop">
+                    <span class="tab-icon">💰</span> Paid
+                    <span class="tab-count" id="paid-count">0</span>
+                </button>
+                <button class="tab" onclick="showTab('ended')" data-tab="ended">
+                    <span class="tab-icon">🏁</span> Ended
+                    <span class="tab-count" id="ended-tab-count">0</span>
+                </button>
             </div>
         </div>
 
-        <div class="tabs">
-            <button class="tab active" onclick="showTab('free-airdrop')">Free</button>
-            <button class="tab" onclick="showTab('paid-airdrop')">Paid</button>
-            <button class="tab" onclick="showTab('ended')">Ended</button>
-        </div>
-        
-
-        <div class="search-bar">
-            <input type="text" placeholder="Search...">
-        </div>
-    </div>
-
-    
-    <div class="airdrop-table">
-        <div class="table-header">
-            <span class="header">Airdrop</span>
-            <span class="header">Type</span>
-            <span class="header">Link</span>
-        </div>
-        <div id="free-airdrop" class="airdrop-list">
-            <div class="airdrop-item">
-                <span class="airdrop">PrimeFi</span>
-                <span class="task">TESTNET</span>
-                <a href="https://voltix.com" class="link">Visit</a>
+        <div class="controls">
+            <div class="search-bar">
+                <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                <input type="text" id="searchInput" placeholder="Search airdrop..." oninput="filterAirdrops()">
             </div>
-            <div class="airdrop-item">
-                <span class="airdrop">T3rn</span>
-                <span class="task">TESTNET</span>
-                <a href="https://kingdom.com" class="link">Visit</a>
-            </div>
-            <div class="airdrop-item">
-                <span class="airdrop">Ordinox</span>
-                <span class="task">TESTNET</span>
-                <a href="https://oshi.com" class="link">Visit</a>
-            </div>
-            <div class="airdrop-item">
-                <span class="airdrop">Edge</span>
-                <span class="task">DEPIN</span>
-                <a href="https://edge.com" class="link">Visit</a>
-            </div>
-            <div class="airdrop-item">
-                <span class="airdrop">Cypher</span>
-                <span class="task">TESTNET</span>
-                <a href="https://haust.com" class="link">Visit</a>
-            </div>
-            <div class="airdrop-item">
-                <span class="airdrop">Beratrax</span>
-                <span class="task">TESTNET</span>
-                <a href="https://roam.com" class="link">Visit</a>
-            </div>
-            <div class="airdrop-item">
-                <span class="airdrop">Hamster S2</span>
-                <span class="task">DAILY</span>
-                <a href="https://navigate.com" class="link">Visit</a>
+            <div class="filter-tags">
+                <button class="filter-tag active" onclick="filterByTag('all')">All</button>
+                <button class="filter-tag" onclick="filterByTag('TESTNET')">Testnet</button>
+                <button class="filter-tag" onclick="filterByTag('DEPIN')">DePIN</button>
+                <button class="filter-tag" onclick="filterByTag('DAILY')">Daily</button>
+                <button class="filter-tag" onclick="filterByTag('BRIDGE')">Bridge</button>
+                <button class="filter-tag" onclick="filterByTag('DEFI')">DeFi</button>
+                <button class="filter-tag" onclick="filterByTag('SOCIAL')">Social</button>
+                <button class="filter-tag" onclick="filterByTag('POINTS')">Points</button>
             </div>
         </div>
 
-        <div id="paid-airdrop" class="airdrop-list" style="display:none;">
-            <p>Content for Paid Airdrop</p>
+        <div class="airdrop-table">
+            <div class="table-header">
+                <span class="col-project">Project</span>
+                <span class="col-chain">Chain</span>
+                <span class="col-type">Type</span>
+                <span class="col-status">Status</span>
+                <span class="col-reward">Est. Reward</span>
+                <span class="col-link">Link</span>
+            </div>
+            <div id="free-airdrop" class="airdrop-list"></div>
+            <div id="paid-airdrop" class="airdrop-list" style="display:none;"></div>
+            <div id="ended" class="airdrop-list" style="display:none;"></div>
         </div>
 
-        <div id="ended" class="airdrop-list" style="display:none;">
-            <p>Content for Ended Airdrop</p>
-        </div>
+        <footer class="footer">
+            <p>Last updated: <span id="last-updated">June 2026</span></p>
+            <p class="disclaimer">Always DYOR. This list is for educational purposes only. Links are third-party — verify before connecting your wallet.</p>
+        </footer>
     </div>
 
     <script src="script.js"></script>
